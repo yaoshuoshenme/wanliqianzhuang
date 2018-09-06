@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qzwl.mapper.user.UserRecMapper" >
+  <resultMap id="BaseResultMap" type="com.qzwl.domain.UserRec" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="recid" property="recid" jdbcType="INTEGER" />
+    <result column="berecid" property="berecid" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, recid, berecid, createtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_userrec
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_userrec
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qzwl.domain.UserRec" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_userrec (recid, berecid, createtime
+      )
+    values (#{recid,jdbcType=INTEGER}, #{berecid,jdbcType=INTEGER}, #{createtime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qzwl.domain.UserRec" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_userrec
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recid != null" >
+        recid,
+      </if>
+      <if test="berecid != null" >
+        berecid,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recid != null" >
+        #{recid,jdbcType=INTEGER},
+      </if>
+      <if test="berecid != null" >
+        #{berecid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qzwl.domain.UserRec" >
+    update t_userrec
+    <set >
+      <if test="recid != null" >
+        recid = #{recid,jdbcType=INTEGER},
+      </if>
+      <if test="berecid != null" >
+        berecid = #{berecid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qzwl.domain.UserRec" >
+    update t_userrec
+    set recid = #{recid,jdbcType=INTEGER},
+      berecid = #{berecid,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

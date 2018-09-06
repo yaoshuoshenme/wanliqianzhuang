@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qzwl.mapper.user.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.qzwl.mapper.user.UserMapper" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="CHAR" />
+    <result column="createtime" property="createtime" jdbcType="DATE" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, password, phone, createtime, flag
+  </sql>
+  <select id="selectByUid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.qzwl.mapper.user.UserMapper" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_user (username, password, phone, 
+      createtime, flag)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, 
+      now(), 1)
+  </insert>
+
+  <update id="updateByUid" parameterType="com.qzwl.mapper.user.UserMapper" >
+    update t_user
+    set
+      flag = #{flag,jdbcType=INTEGER}
+    where id = #{uid}
+  </update>
+
+  <select id="selectByName" parameterType="java.lang.String" resultType="com.qzwl.domain.User">
+    select <include refid="Base_Column_List"></include>
+    from t_user where username=#{username}
+  </select>
+</mapper>
