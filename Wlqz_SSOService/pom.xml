@@ -11,5 +11,13 @@
 
     <artifactId>Wlqz_SSOService</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.qzwl</groupId>
+            <artifactId>Wlqz_Common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+    </dependencies>
 
 </project>

@@ -29,6 +29,11 @@ public class EncrypUtil {
         SimpleHash hash=new SimpleHash("md5",pass,salt,128);
         return hash.toString();
     }
+    //md5摘要
+    public static String md5Pass(String s ,String pass){
+        SimpleHash hash=new SimpleHash("md5",pass,s,128);
+        return hash.toString();
+    }
     //aes
     public static Key getAesKey(){
         AesCipherService service=new AesCipherService();

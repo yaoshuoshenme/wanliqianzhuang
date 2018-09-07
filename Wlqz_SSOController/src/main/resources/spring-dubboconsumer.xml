@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--服务消费者-->
+    <!--&lt;!&ndash;1、应用名称&ndash;&gt;-->
+    <!--<dubbo:application name="userconsumer"></dubbo:application>-->
+    <!--&lt;!&ndash;2、配置注册中心&ndash;&gt;-->
+    <!--<dubbo:registry address="zookeeper://10.8.163.50:2181" check="false"></dubbo:registry>-->
+    <!--&lt;!&ndash;3、配置协议&ndash;&gt;-->
+    <!--<dubbo:protocol name="dubbo" port="20880"  ></dubbo:protocol>-->
+    <!--&lt;!&ndash;4、配置消费服务&ndash;&gt;-->
+    <!--<dubbo:reference interface="com.wyh10000.service.user.UserService" id="userProvider" retries="0"></dubbo:reference>-->
+
+    <!--1. 应用名称-->
+    <dubbo:application name="ssoconsumer"></dubbo:application>
+    <!--2. 配置注册中心-->
+    <dubbo:registry address="10.8.163.136:2181" check="false"></dubbo:registry>
+    <!--3. 协议-->
+    <dubbo:protocol name="dubbo" port="20881"></dubbo:protocol>
+    <!--4. 配置消费服务-->
+    <dubbo:reference interface="com.qzwl.service.sso.SSOService" id="ssoProvider" retries="0"></dubbo:reference>
+</beans>

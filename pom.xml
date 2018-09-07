@@ -18,6 +18,7 @@
         <module>Wlqz_Web</module>
         <module>Wlqz_WebController</module>
         <module>Wlqz_UserServiceProvider</module>
+        <module>Wlqz_SSOController</module>
     </modules>
     <packaging>pom</packaging>
 

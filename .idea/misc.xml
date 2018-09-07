@@ -12,6 +12,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/Wlqz_LoginController" />
+    <file type="web" url="file://$PROJECT_DIR$/Wlqz_SSOController" />
     <file type="web" url="file://$PROJECT_DIR$/Wlqz_UserServiceProvider" />
     <file type="web" url="file://$PROJECT_DIR$/Wlqz_Web" />
     <file type="web" url="file://$PROJECT_DIR$/Wlqz_WebController" />

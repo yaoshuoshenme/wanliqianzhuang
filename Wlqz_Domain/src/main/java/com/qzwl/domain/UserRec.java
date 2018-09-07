@@ -1,8 +1,9 @@
 package com.qzwl.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserRec {
+public class UserRec implements Serializable {
     private Integer id;
 
     private Integer recid;

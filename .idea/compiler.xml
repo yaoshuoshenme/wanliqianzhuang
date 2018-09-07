@@ -10,6 +10,7 @@
         <module name="Wlqz_Domain" />
         <module name="Wlqz_LoginController" />
         <module name="Wlqz_Mapper" />
+        <module name="Wlqz_SSOController" />
         <module name="Wlqz_SSOService" />
         <module name="Wlqz_SSOServiceProvider" />
         <module name="Wlqz_UserService" />
