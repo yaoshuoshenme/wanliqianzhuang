@@ -19,6 +19,7 @@
         <module>Wlqz_WebController</module>
         <module>Wlqz_UserServiceProvider</module>
         <module>Wlqz_SSOController</module>
+        <module>Wlqz_FDSController</module>
     </modules>
     <packaging>pom</packaging>
 

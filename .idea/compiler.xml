@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Wlqz_Common" />
         <module name="Wlqz_Domain" />
+        <module name="Wlqz_FDSController" />
         <module name="Wlqz_LoginController" />
         <module name="Wlqz_Mapper" />
         <module name="Wlqz_SSOController" />

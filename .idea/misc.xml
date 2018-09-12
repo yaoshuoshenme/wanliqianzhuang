@@ -11,6 +11,7 @@
     </session>
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/Wlqz_FDSController" />
     <file type="web" url="file://$PROJECT_DIR$/Wlqz_LoginController" />
     <file type="web" url="file://$PROJECT_DIR$/Wlqz_SSOController" />
     <file type="web" url="file://$PROJECT_DIR$/Wlqz_UserServiceProvider" />
