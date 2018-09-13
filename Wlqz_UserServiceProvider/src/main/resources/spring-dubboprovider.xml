@@ -22,6 +22,6 @@ http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubb
     <!--3、设置协议-->
     <dubbo:protocol name="dubbo" port="20880"></dubbo:protocol>
     <!--4、发布服务-->
-    <dubbo:service interface="com.qzwl.service.user.UserService" ref="userServiceProvider" retries="0"></dubbo:service>
+    <dubbo:service interface="com.qzwl.service.user.UserService" ref="userServiceProvider" retries="0" timeout="100000"></dubbo:service>
                    
 </beans>
