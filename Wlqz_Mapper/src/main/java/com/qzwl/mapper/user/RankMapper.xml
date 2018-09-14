@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qzwl.mapper.user.RankMapper" >
+  <resultMap id="BaseResultMap" type="com.qzwl.domain.Rank" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="rankimages" property="rankimages" jdbcType="VARCHAR" />
+    <result column="createdate" property="createdate" jdbcType="DATE" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uid, type, rankimages, createdate, flag
+  </sql>
+  <select id="selectByUid" resultType="com.qzwl.domain.Rank" parameterType="java.lang.Integer" >
+    select *
+    from t_rank
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.qzwl.domain.Rank" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_rank (uid, type, rankimages, 
+      createdate, flag)
+    values (#{uid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{rankimages,jdbcType=VARCHAR}, 
+      date, 0)
+  </insert>
+
+  <update id="updateByUid" parameterType="java.lang.Integer" >
+    update t_rank
+    set
+      flag = #{flag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

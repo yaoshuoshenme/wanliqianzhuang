@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qzwl.mapper.user.UserDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.qzwl.domain.UserDetail" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="idcard" property="idcard" jdbcType="VARCHAR" />
+    <result column="birth" property="birth" jdbcType="DATE" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="DATE" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+    <result column="image1" property="image1" jdbcType="VARCHAR" />
+    <result column="image2" property="image2" jdbcType="VARCHAR" />
+    <result column="image3" property="image3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, sex, idcard, birth, address, createtime, flag, image1, image2, image3
+  </sql>
+  
+  <select id="selectByUid" parameterType="java.lang.Integer" resultType="com.qzwl.domain.UserDetail">
+    select *from t_userdetail where uid = #{uid}
+  </select>
+
+  <insert id="insert" parameterType="com.qzwl.domain.UserDetail" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_userdetail (uid,name, sex, idcard,
+      birth, address, createtime, 
+      flag, image1, image2, 
+      image3)
+    values (#{uid},#{name,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{idcard,jdbcType=VARCHAR},
+      #{birth,jdbcType=DATE}, #{address,jdbcType=VARCHAR}, now(),
+      0, #{image1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR},
+      #{image3,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateByUid" parameterType="com.qzwl.domain.UserDetail" >
+    update t_userdetail
+    set
+      flag = #{flag,jdbcType=INTEGER},
+
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>
